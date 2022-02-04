@@ -1,0 +1,51 @@
+
+# FastDfs
+fdfs:
+
+  so-timeout: 2000
+  connect-timeout: 2000
+
+  # 缩略图尺寸
+  thumb-image:
+    width: 100
+    height: 100
+
+  # tracker 配置地址集群
+  tracker-list:
+    - xxx.xxx.xxx:22122
+    - xxx.xxx.xxx:22122
+
+# 图片资源供外部访问地址（nginx服务）
+fastDfsPath: http://xxx.xxx.xxx:8888/
+# 图片缩略图尾缀
+fastDfsSpec: 100x100
+
+
+# 服务端口
+server:
+  port: 9000
+
+
+spring:
+
+  # 设置上传图片大小限制
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+
+  # spring不拦截错误，直接抛出（404页面丢失错误）
+#  mvc:
+#    throw-exception-if-no-handler-found: true
+#  web:
+#    resources:
+#      add-mappings: false
+
+  # spring线程池配置内容
+  task:
+    pool:
+      corePoolSize: 4
+      maxPoolSize: 8
+      keepAliveSeconds: 60
+      queueCapacity: 20
